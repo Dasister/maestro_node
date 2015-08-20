@@ -55,6 +55,6 @@ double PololuController::maestroGetTarget(int channel) {
     serial->write(list);
     //Response data
     list = serial->read(2);
-    double value = list[0] + 256 * list[1];
+    double value = (unsigned char)list[0] + 256 * (unsigned char)list[1];
     return value * (MAX_VALUE_PULSE / ((double) MAX_VALUE));
 }
